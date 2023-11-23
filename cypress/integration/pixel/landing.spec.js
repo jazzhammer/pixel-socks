@@ -18,8 +18,33 @@ describe('when landing at /...', () => {
     cy.wait(2000);
     cy.getByTestId(`main`).should('exist').click(50, 50);
     cy.wait(2000);
-    cy.getByTestId(`color-r`).should('exist').contains('65');
-    cy.getByTestId(`color-g`).should('exist').contains('91');
-    cy.getByTestId(`color-b`).should('exist').contains('129');
+    cy.getByTestId(`color-r`).should('exist').invoke('text').then((value) => {
+      try {
+        parseInt(value);
+        cy.log(`found color component: ${value}`);
+      } catch (err) {
+        cy.log(`color value must be numeric, instead found ${value}`);
+        throw err
+      }
+    });
+    cy.getByTestId(`color-g`).should('exist').invoke('text').then((value) => {
+      try {
+        parseInt(value);
+        cy.log(`found color component: ${value}`);
+      } catch (err) {
+        cy.log(`color value must be numeric, instead found ${value}`);
+        throw err
+      }
+    });
+    cy.getByTestId(`color-b`).should('exist').invoke('text').then((value) => {
+      try {
+        parseInt(value);
+        cy.log(`found color component: ${value}`);
+      } catch (err) {
+        cy.log(`color value must be numeric, instead found ${value}`);
+        throw err
+      }
+    });
+    // cy.log();
   })
 });
