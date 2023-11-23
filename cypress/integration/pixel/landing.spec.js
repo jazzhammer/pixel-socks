@@ -45,6 +45,6 @@ describe('when landing at /...', () => {
         throw err
       }
     });
-    // cy.log();
+    cy.getByTestId('instruction-drop-pixel').should('exist').should('be.visible').contains('drop a pixel');
   })
 });
